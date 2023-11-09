@@ -4,7 +4,7 @@ import hashlib
 import sys
 
 HASH_ALGORITHM = 'SHA-256'
-FILE_NAME = 'hashpasswd.txt'
+FILE_NAME = 'hashpasswd'
 
 def hash_password(password):
     digest = hashlib.sha256()
@@ -25,7 +25,7 @@ def id_and_password_exists(user_id, hashed_password):
 def main(port):
     # Set SSL context
     context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
-    context.load_cert_chain(certfile='keystore.p12', password='rushabh')
+    context.load_cert_chain(certfile='server.crt', keyfile='server.key')
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         with context.wrap_socket(sock, server_side=True) as ssock:

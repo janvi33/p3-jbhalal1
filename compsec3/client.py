@@ -10,7 +10,7 @@ class Client:
     def start(self):
         # Set up the SSL context
         context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
-        context.load_verify_locations('truststore.p12')
+        context.load_verify_locations(cafile="server.crt")
         context.verify_mode = ssl.CERT_REQUIRED
         context.check_hostname = False
 
