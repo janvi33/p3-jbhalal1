@@ -53,5 +53,13 @@ if __name__ == "__main__":
     else:
         host = sys.argv[1]
         port = int(sys.argv[2])
+        if host == "localhost" or not host:
+            print("The host name should not be localhost or empty")
+            sys.exit(1)
+
+
+        if not (1024 <= port <= 65535):
+            print("The port number should be a user-defined number between 1024 and 65535")
+            sys.exit(1) 
         client = Client(host, port)
         client.start()

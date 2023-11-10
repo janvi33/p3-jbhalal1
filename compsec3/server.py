@@ -65,4 +65,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     main_port = int(sys.argv[1])
+    if not (1024 <= main_port <= 65535):
+        print("The port number should be a user-defined number between 1024 and 65535")
+        sys.exit(1)
     main(main_port)
